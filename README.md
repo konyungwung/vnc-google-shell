@@ -6,7 +6,7 @@
   
   3. wget https://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb
 
-  4. git clone https://github.com/alexdanca341341/vnc-google-shell.git
+  4. git clone [https://github.com/alexdanca341341/vnc-google-shell.git](https://github.com/konyungwung/vnc-google-shell)
      
      1. cd vnc-google-shell 
      2. cp vnc.py ../
