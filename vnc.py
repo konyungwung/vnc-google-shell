@@ -1,3 +1,28 @@
+#@title **Create User**
+#@markdown Enter Username and Password
+
+import os
+
+username = "user" #@param {type:"string"}
+password = "root" #@param {type:"string"}
+
+print("Creating User and Setting it up")
+
+# Creation of user
+os.system(f"useradd -m {username}")
+
+# Add user to sudo group
+os.system(f"adduser {username} sudo")
+    
+# Set password of user to 'root'
+os.system(f"echo '{username}:{password}' | sudo chpasswd")
+
+# Change default shell from sh to bash
+os.system("sed -i 's/\/bin\/sh/\/bin\/bash/g' /etc/passwd")
+
+print(f"User created and configured having username `{username}` and password `{password}`")
+
+
 #@title **RDP**
 #@markdown  It takes 4-5 minutes for installation
 
@@ -6,7 +31,7 @@ import subprocess
 
 #@markdown  Visit http://remotedesktop.google.com/headless and copy the command after Authentication
 
-CRP = "" #@param {type:"string"}
+CRP = "DISPLAY= /opt/google/chrome-remote-desktop/start-host --code=\"4/0ARtbsJpGAEBvUmSxaKWbiGIPhjR9vGOjUJyzB3esRFHPyf8nh2tt0XYMdUnfaA2YH7yhXg\" --redirect-url=\"https://remotedesktop.google.com/_/oauthredirect\" --name=$(hostname)" #@param {type:"string"}
 
 #@markdown Enter a Pin (more or equal to 6 digits)
 Pin = 123456 #@param {type: "integer"}
@@ -86,7 +111,6 @@ except NameError as e:
     print("'username' variable not found, Create a user first")
     
     
-    
     #@title **SSH**
 
 ! pip install colab_ssh --upgrade &> /dev/null
@@ -107,7 +131,7 @@ def runNgrok():
     from IPython.display import clear_output
 
     import getpass
-    ngrokToken = getpass.getpass("Enter the ngrokToken: ")
+    ngrokToken = "1yoSDwXI4Oqpk1SnfujML1bBNvK_4btx6DesZDkQzSaPE5GYU"
 
     launch_ssh(ngrokToken, password, region=ngrokRegion)
     clear_output()
